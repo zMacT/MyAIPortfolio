@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaccery Thomas Tarver - Computer Science Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6437B8;
+            --accent: #D58836;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --gray: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, #932DE2 0%, #5A2DE2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .gpa {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            animation: fadeIn 0.8s ease;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .traits {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .trait {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(100, 55, 184, 0.3);
+        }
+
+        .experience-item, .project-item, .award-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .experience-item:last-child, .project-item:last-child, .award-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-item h3, .project-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(100, 55, 184, 0.05) 0%, rgba(213, 136, 54, 0.05) 100%);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 16px rgba(100, 55, 184, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .project-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .year {
+            color: var(--gray);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Zaccery Thomas Tarver</h1>
+        <p>Computer Science Student | Cybersecurity & Mathematics Minor</p>
+        <p class="gpa">Monmouth University | GPA: 3.98/4.0</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#academics">Academics</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="traits">
+                <span class="trait">Eager</span>
+                <span class="trait">Passionate</span>
+                <span class="trait">Driven</span>
+                <span class="trait">Role Model</span>
+            </div>
+            <p style="text-align: center; font-size: 1.1rem; color: var(--gray); margin-top: 1rem;">
+                Computer Science student at Monmouth University pursuing a degree with minors in Cybersecurity and Mathematics. 
+                I focus on finding and applying creative solutions to real-world problems through innovative technology and programming.
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>Programming Languages & Frameworks</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Java</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">C++</div>
+                <div class="skill-item">R</div>
+                <div class="skill-item">HTML/CSS</div>
+                <div class="skill-item">Bash</div>
+                <div class="skill-item">PowerShell</div>
+                <div class="skill-item">Batch</div>
+                <div class="skill-item">Arduino</div>
+                <div class="skill-item">LibGDX</div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience & Leadership</h2>
+            
+            <div class="experience-item">
+                <h3>UPE President of Kappa Chapter</h3>
+                <p class="year">2025</p>
+                <p>Leading the Upsilon Pi Epsilon honors computer science society chapter at Monmouth University.</p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Co-Vice President & Treasurer of MU Chess</h3>
+                <p class="year">2025</p>
+                <p>Managing club operations and finances while promoting chess activities on campus.</p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Resident Assistant</h3>
+                <p class="year">Fall 2024</p>
+                <p>Supporting residential students and fostering a positive living environment.</p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Math Learning Center Tutor</h3>
+                <p class="year">Spring 2024</p>
+                <p>Providing academic support and tutoring services to fellow students in mathematics.</p>
+            </div>
+
+            <div class="experience-item">
+                <h3>MU Hackathon 2024 - Programming Mentor</h3>
+                <p class="year">2024</p>
+                <p>Mentored participants and provided technical guidance during the hackathon event.</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Check I/O Scanner Application</h3>
+                    <p class="year">Honors Thesis Project | 2024</p>
+                    <p>A lightweight Java-based check-in/out system using the javax.swing.* package for graphics. Check-in/out is done using a Symbol LS2208 Barcode Scanner and the Zebra Scanner SDK w/ JPOS. Logs are automatically saved when the window is closed. Ideal for organizations seeking to localize check-in/out solutions.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Swing</span>
+                        <span class="tag">Barcode Scanner SDK</span>
+                        <span class="tag">JPOS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>NIH Project Funding Analysis</h3>
+                    <p class="year">Research Project | Summer 2023</p>
+                    <p>A research project with the goal of discovering patterns between research abstracts and request for applications (RFAs). A Python library (gensim) is used to calculate the cosine similarity between these two documents. A line of best fit is plotted to represent the relationship between wording similarity and total funding awarded to the researchers. These trends may help prospective researchers find improved ways to write their project abstracts to receive the funds that they need.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Gensim</span>
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">NLP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Automated Controller Robot - Lego Mario Side Project</h3>
+                    <p class="year">Fun Side Project | 2024</p>
+                    <p>A fun side project! A Lego EV3 brick is wired to a robot which holds a controller. The robot can control the controller through programmed instructions downloaded to the EV3 brick. I wrote a Python program that lets Mario step on an enemy in ARCADE ARCHIVES: VS. SUPER MARIO BROS.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Lego EV3</span>
+                        <span class="tag">Robotics</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent); margin-top: 2rem; margin-bottom: 1rem;">Additional Projects</h3>
+
+            <div class="project-item">
+                <h3>Mobile App for Tournaments</h3>
+                <p class="year">2025</p>
+                <p>Developed an Android application to manage and organize tournament brackets and schedules.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>2D Platformer Video Game</h3>
+                <p class="year">2024</p>
+                <p>Created a fully functional 2D platformer game using LibGDX framework in Java.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>Java Terminal Tournament Program</h3>
+                <p class="year">2024</p>
+                <p>Built a command-line application for managing tournament structures and results.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>Connect 4 Game</h3>
+                <p class="year">2023</p>
+                <p>Implemented the classic Connect 4 game with AI opponent in Java.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>Wordle Clone</h3>
+                <p class="year">2022</p>
+                <p>Created a Java version of the popular word-guessing game Wordle.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>Custom Arduino Thermometer</h3>
+                <p class="year">2019</p>
+                <p>Built a custom thermometer using Arduino hardware and programming.</p>
+            </div>
+        </section>
+
+        <section id="academics">
+            <h2>Computer Science Academics</h2>
+            
+            <h3 style="color: var(--accent); margin-top: 1rem;">Current Courses</h3>
+            <ul>
+                <li>Cybersecurity</li>
+                <li>Operating Systems</li>
+                <li>Automata Theory</li>
+            </ul>
+
+            <h3 style="color: var(--accent); margin-top: 1.5rem;">Completed Coursework</h3>
+            <ul>
+                <li>Software Engineering Concepts</li>
+                <li>Android App Development</li>
+                <li>Advanced Object-Oriented Design with C++</li>
+                <li>Computer Networks</li>
+                <li>Database Systems</li>
+                <li>Linear Algebra</li>
+                <li>Introduction to Game Development</li>
+                <li>Data Structures and Algorithms</li>
+                <li>Computation and Statistics with R</li>
+                <li>Discrete Mathematics</li>
+                <li>Computer Architecture I</li>
+                <li>Probability and Statistics I</li>
+                <li>Calculus II with Analytic Geometry</li>
+            </ul>
+        </section>
+
+        <section id="awards">
+            <h2>Honors & Awards</h2>
+
+            <div class="award-item">
+                <h3>Dean's Academic Honors List</h3>
+                <p>Fall 2022, Spring 2023, Fall 2023, Spring 2024, Fall 2024, Spring 2025</p>
+            </div>
+
+            <div class="award-item">
+                <h3>Founders Day Convocation 2023 Invitee</h3>
+                <p>Recognized for academic excellence at Monmouth University.</p>
+            </div>
+
+            <div class="award-item">
+                <h3>Top 20 of Toms River High School North Class of 2022</h3>
+                <p>Graduated among the top students in the class.</p>
+            </div>
+
+            <div class="award-item">
+                <h3>AP Scholar Award</h3>
+                <p>Computer Science A, Calculus AB, US Government and Politics (2022)</p>
+            </div>
+
+            <div class="award-item">
+                <h3>Rowan Blastoff Rocketry Competition</h3>
+                <p>3rd Place Winner (2019)</p>
+            </div>
+
+            <div class="award-item">
+                <h3>Chess Team Varsity Letter</h3>
+                <p>2019-2020 | Shore HS Chess League Championship Tournament 2020 Participant</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:zmact46@gmail.com">zmact46@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>🎓</span>
+                    <a href="mailto:s1338565@monmouth.edu">s1338565@monmouth.edu</a>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <a href="https://zmact46.carrd.co" target="_blank">zmact46.carrd.co</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Zaccery Thomas Tarver | Computer Science Portfolio</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Monmouth University</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Add scroll reveal effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
